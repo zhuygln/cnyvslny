@@ -1,0 +1,45 @@
+name: Update an entity
+description: Report that an existing entity has changed the term they use
+title: "Update: [entity name]"
+labels: ["update"]
+body:
+  - type: input
+    id: entity_name
+    attributes:
+      label: Entity name
+      description: The name of the existing entity to update
+      placeholder: e.g. Apple
+    validations:
+      required: true
+
+  - type: textarea
+    id: what_changed
+    attributes:
+      label: What changed?
+      description: Describe what is different (e.g. "They now use 'Chinese New Year' instead of 'Lunar New Year'")
+    validations:
+      required: true
+
+  - type: input
+    id: source_url
+    attributes:
+      label: New source URL
+      description: Public link to the updated source
+      placeholder: https://...
+    validations:
+      required: true
+
+  - type: input
+    id: captured_on
+    attributes:
+      label: Captured date
+      description: When you captured this (YYYY-MM-DD)
+      placeholder: "2026-01-29"
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Upload a screenshot if available (optional). Drag and drop an image here.

@@ -1,0 +1,37 @@
+name: Correction request
+description: Request a correction to an existing entry
+title: "Correction: [entity name]"
+labels: ["correction"]
+body:
+  - type: input
+    id: entity_name
+    attributes:
+      label: Entity name
+      description: The entity whose entry needs correction
+      placeholder: e.g. Apple
+    validations:
+      required: true
+
+  - type: textarea
+    id: whats_incorrect
+    attributes:
+      label: What's incorrect?
+      description: Describe what is wrong with the current entry
+    validations:
+      required: true
+
+  - type: textarea
+    id: correct_information
+    attributes:
+      label: Correct information
+      description: What should the entry say instead?
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Supporting evidence
+      description: Upload a screenshot or provide a link to support the correction. Drag and drop an image here.
+    validations:
+      required: true

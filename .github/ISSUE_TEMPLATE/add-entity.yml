@@ -1,0 +1,114 @@
+name: Add an entity
+description: Submit a new organization and the term they use for the holiday
+title: "Add: [entity name]"
+labels: ["new-entry"]
+body:
+  - type: input
+    id: entity_name
+    attributes:
+      label: Entity name
+      description: The name of the organization
+      placeholder: e.g. Apple
+    validations:
+      required: true
+
+  - type: dropdown
+    id: entity_type
+    attributes:
+      label: Entity type
+      options:
+        - company
+        - school
+        - gov
+        - media
+        - nonprofit
+        - app
+        - other
+    validations:
+      required: true
+
+  - type: input
+    id: country_or_region
+    attributes:
+      label: Country or region
+      description: Where the organization is based
+      placeholder: e.g. US
+    validations:
+      required: true
+
+  - type: dropdown
+    id: term_used
+    attributes:
+      label: Term used
+      options:
+        - Chinese New Year
+        - Lunar New Year
+        - Lunar New Year (Chinese New Year)
+        - Spring Festival
+        - other
+    validations:
+      required: true
+
+  - type: input
+    id: exact_phrase
+    attributes:
+      label: Exact phrase
+      description: The literal text used by the organization
+      placeholder: e.g. "Happy Lunar New Year!"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: context
+    attributes:
+      label: Context
+      description: Where this term appeared
+      options:
+        - social_post
+        - press_release
+        - product_ui
+        - email
+        - event_page
+        - website
+        - other
+    validations:
+      required: true
+
+  - type: input
+    id: platform
+    attributes:
+      label: Platform
+      description: The platform where it was published
+      placeholder: e.g. X, Instagram, company website
+    validations:
+      required: true
+
+  - type: input
+    id: source_url
+    attributes:
+      label: Source URL
+      description: Public link to the source
+      placeholder: https://...
+    validations:
+      required: true
+
+  - type: input
+    id: captured_on
+    attributes:
+      label: Captured date
+      description: When you captured this (YYYY-MM-DD)
+      placeholder: "2026-01-29"
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Any additional context (optional)
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Upload a screenshot if available (optional). Drag and drop an image here.
