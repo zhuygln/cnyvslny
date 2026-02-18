@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "title": "cnyvslny entry",
+  "description": "Schema for a single entry in the JSONL data file",
+  "type": "object",
+  "required": [
+    "entity_name",
+    "entity_type",
+    "country_or_region",
+    "term_used",
+    "exact_phrase",
+    "context",
+    "platform",
+    "source_url",
+    "captured_on",
+    "contributor"
+  ],
+  "properties": {
+    "entity_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "entity_type": {
+      "type": "string",
+      "enum": ["company", "school", "gov", "media", "nonprofit", "app", "other"]
+    },
+    "country_or_region": {
+      "type": "string",
+      "minLength": 1
+    },
+    "term_used": {
+      "type": "string",
+      "enum": [
+        "Chinese New Year",
+        "Lunar New Year",
+        "Lunar New Year (Chinese New Year)",
+        "Spring Festival",
+        "other"
+      ]
+    },
+    "exact_phrase": {
+      "type": "string",
+      "minLength": 1
+    },
+    "context": {
+      "type": "string",
+      "enum": [
+        "social_post",
+        "press_release",
+        "product_ui",
+        "email",
+        "event_page",
+        "website",
+        "other"
+      ]
+    },
+    "platform": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "captured_on": {
+      "type": "string",
+      "format": "date"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "contributor": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}
