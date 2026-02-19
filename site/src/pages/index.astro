@@ -1,0 +1,19 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import SearchBar from '../components/SearchBar.astro';
+import ColumnContainer from '../components/ColumnContainer.astro';
+import { loadEntries } from '../lib/load-data';
+
+const entries = loadEntries();
+const entriesJson = JSON.stringify(entries);
+---
+<Layout title="CNY vs LNY">
+  <Header />
+  <SearchBar />
+  <ColumnContainer />
+  <script define:vars={{ entriesJson }}>
+    window.__CNYVSLNY_DATA__ = JSON.parse(entriesJson);
+  </script>
+  <script src="../scripts/app.ts"></script>
+</Layout>
