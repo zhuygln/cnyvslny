@@ -33,13 +33,13 @@ function escapeHtml(str: string): string {
 }
 
 const ENTITY_TYPE_CLASSES: Record<string, Record<Column, string>> = {
-  company: { cny: 'bg-[rgba(59,130,246,0.15)] text-[#93bbff]', lny: 'bg-blue-100 text-blue-800' },
-  school: { cny: 'bg-[rgba(34,197,94,0.15)] text-[#86efac]', lny: 'bg-green-100 text-green-800' },
-  gov: { cny: 'bg-[rgba(239,68,68,0.15)] text-[#fca5a5]', lny: 'bg-red-100 text-red-800' },
-  media: { cny: 'bg-[rgba(168,85,247,0.15)] text-[#d8b4fe]', lny: 'bg-purple-100 text-purple-800' },
-  nonprofit: { cny: 'bg-[rgba(234,179,8,0.15)] text-[#fde68a]', lny: 'bg-yellow-100 text-yellow-800' },
-  app: { cny: 'bg-[rgba(99,102,241,0.15)] text-[#a5b4fc]', lny: 'bg-indigo-100 text-indigo-800' },
-  other: { cny: 'bg-[rgba(240,230,255,0.1)] text-[#b8a9cc]', lny: 'bg-gray-100 text-gray-800' },
+  company: { cny: 'bg-red-900/60 text-yellow-200', lny: 'bg-blue-100 text-blue-800' },
+  school: { cny: 'bg-red-900/60 text-yellow-200', lny: 'bg-green-100 text-green-800' },
+  gov: { cny: 'bg-red-900/60 text-yellow-200', lny: 'bg-red-100 text-red-800' },
+  media: { cny: 'bg-red-900/60 text-yellow-200', lny: 'bg-purple-100 text-purple-800' },
+  nonprofit: { cny: 'bg-red-900/60 text-yellow-200', lny: 'bg-yellow-100 text-yellow-800' },
+  app: { cny: 'bg-red-900/60 text-yellow-200', lny: 'bg-indigo-100 text-indigo-800' },
+  other: { cny: 'bg-red-900/60 text-yellow-300/70', lny: 'bg-gray-100 text-gray-800' },
 };
 
 const CONTEXT_LABELS: Record<string, string> = {
@@ -54,7 +54,7 @@ const CONTEXT_LABELS: Record<string, string> = {
 
 function renderCard(entry: Entry, column: Column): string {
   const typeEntry = ENTITY_TYPE_CLASSES[entry.entity_type];
-  const fallback = column === 'lny' ? 'bg-gray-100 text-gray-800' : 'bg-[rgba(240,230,255,0.1)] text-[#b8a9cc]';
+  const fallback = column === 'lny' ? 'bg-gray-100 text-gray-800' : 'bg-red-900/60 text-yellow-300/70';
   const typeClasses = typeEntry ? typeEntry[column] : fallback;
   const contextLabel = CONTEXT_LABELS[entry.context] || entry.context;
 
@@ -78,22 +78,22 @@ function renderCard(entry: Entry, column: Column): string {
   </div>`;
   }
 
-  return `<div class="p-4 hover:bg-[rgba(240,230,255,0.05)] transition-all duration-200 ease-in-out hover:-translate-y-[2px]">
+  return `<div class="p-4 hover:bg-red-700/50 transition-all duration-200 ease-in-out hover:-translate-y-[2px]">
     <div class="flex items-start justify-between gap-2">
       <div class="min-w-0">
-        <h3 class="font-medium text-sm truncate text-[#f0e6ff]">${escapeHtml(entry.entity_name)}</h3>
-        <p class="text-xs text-[#b8a9cc] mt-0.5">${escapeHtml(entry.country_or_region)}</p>
+        <h3 class="font-medium text-sm truncate text-yellow-200">${escapeHtml(entry.entity_name)}</h3>
+        <p class="text-xs text-yellow-400/70 mt-0.5">${escapeHtml(entry.country_or_region)}</p>
       </div>
       <span class="shrink-0 text-xs font-medium rounded-full px-2 py-0.5 ${typeClasses}">${escapeHtml(entry.entity_type)}</span>
     </div>
-    <p class="mt-2 text-sm italic text-[#d4c6e8]">"${escapeHtml(entry.exact_phrase)}"</p>
-    <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-[#b8a9cc]">
+    <p class="mt-2 text-sm italic text-yellow-100">"${escapeHtml(entry.exact_phrase)}"</p>
+    <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-yellow-400/60">
       <span>${escapeHtml(contextLabel)}</span>
       <span>· ${escapeHtml(entry.platform)}</span>
       <span>· ${escapeHtml(entry.captured_on)}</span>
     </div>
-    ${entry.notes ? `<p class="mt-1.5 text-xs text-[#8a7ca0]">${escapeHtml(entry.notes)}</p>` : ''}
-    <a href="${escapeHtml(entry.source_url)}" target="_blank" rel="noopener noreferrer" class="mt-2 inline-block text-xs text-[#e65100] hover:text-[#ff8f00] hover:underline transition-colors duration-200">Source ↗</a>
+    ${entry.notes ? `<p class="mt-1.5 text-xs text-yellow-500/50">${escapeHtml(entry.notes)}</p>` : ''}
+    <a href="${escapeHtml(entry.source_url)}" target="_blank" rel="noopener noreferrer" class="mt-2 inline-block text-xs text-yellow-300 hover:text-yellow-100 hover:underline transition-colors duration-200">Source ↗</a>
   </div>`;
 }
 
