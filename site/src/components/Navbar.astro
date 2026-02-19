@@ -1,14 +1,16 @@
 ---
+const base = import.meta.env.BASE_URL;
 ---
 <nav class="sticky top-0 z-50 bg-surface/80 backdrop-blur-md border-b border-[rgba(240,230,255,0.1)]">
   <div class="max-w-7xl mx-auto px-4 flex items-center justify-between h-14">
-    <a href="/" class="font-serif text-lg font-bold text-text-primary hover:text-accent-light transition-colors duration-200">
-      CNYVSLNY
+    <a href={base} class="font-serif text-lg font-bold text-text-primary hover:text-accent-light transition-colors duration-200">
+      CNY VS LNY
     </a>
     <div class="flex items-center gap-6">
-      <a href="#history" class="text-sm font-medium text-text-muted hover:text-text-primary transition-colors duration-200">History</a>
+      <a href={`${base}/history`} class="text-sm font-medium text-text-muted hover:text-text-primary transition-colors duration-200">History</a>
       <a href="#about" class="text-sm font-medium text-text-muted hover:text-text-primary transition-colors duration-200">About</a>
-      <a href="#blogs" class="text-sm font-medium text-text-muted hover:text-text-primary transition-colors duration-200">Blogs</a>
+      <a href={`${base}/blogs`} class="text-sm font-medium text-text-muted hover:text-text-primary transition-colors duration-200">Blogs</a>
+      <a href={`${base}/faq`} class="text-sm font-medium text-text-muted hover:text-text-primary transition-colors duration-200">FAQ</a>
     </div>
   </div>
 </nav>
