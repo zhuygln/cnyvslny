@@ -1,0 +1,38 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+
+const base = import.meta.env.BASE_URL;
+
+const posts = [
+  {
+    title: 'Change.org Petition: "End Cultural Appropriation — Restore the Name Chinese New Year"',
+    date: 'February 19, 2026',
+    description: 'A petition by Alice Meng calls on institutions to stop replacing "Chinese New Year" with "Lunar New Year," citing colonial history and the 2024 UNESCO heritage recognition.',
+    href: `${base}/blogs/change-org-petition`,
+  },
+  {
+    title: 'Why "Lunar New Year" Is Not the Same as "Chinese New Year"',
+    date: 'January 28, 2025',
+    description: 'Isabel Zhang argues that the shift from "Chinese New Year" to "Lunar New Year" misrepresents the festival\'s cultural significance, erases distinct traditions, and was imposed without community consultation.',
+    href: `${base}/blogs/why-lunar-new-year-not-same-as-chinese`,
+  },
+];
+---
+<Layout title="Blogs — CNY vs LNY">
+  <Navbar />
+  <main class="max-w-3xl mx-auto px-4 py-12">
+    <h1 class="font-serif text-3xl sm:text-4xl font-bold mb-8">Blogs</h1>
+    <ul class="space-y-6">
+      {posts.map((post) => (
+        <li>
+          <a href={post.href} class="block p-5 rounded-lg bg-surface-card border border-[rgba(240,230,255,0.08)] hover:border-accent-light/40 transition-colors duration-200">
+            <p class="text-text-muted text-sm mb-1">{post.date}</p>
+            <h2 class="font-serif text-xl font-bold mb-2 text-text-primary">{post.title}</h2>
+            <p class="text-text-muted text-sm">{post.description}</p>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </main>
+</Layout>

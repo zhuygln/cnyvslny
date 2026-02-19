@@ -1,0 +1,54 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+
+const base = import.meta.env.BASE_URL;
+---
+<Layout title="FAQ — CNY vs LNY">
+  <Navbar />
+  <main class="max-w-3xl mx-auto px-4 py-12">
+    <h1 class="font-serif text-3xl sm:text-4xl font-bold mb-8">Frequently Asked Questions</h1>
+
+    <div class="space-y-10">
+      <section>
+        <h3 class="font-serif text-xl font-bold mb-3">What is CNYVSLNY?</h3>
+        <p class="text-text-muted">An open-source project tracking how organizations refer to the holiday — whether they use "Chinese New Year," "Lunar New Year," "Spring Festival," or another term. Each entry is sourced from publicly observable material and linked to a URL.</p>
+      </section>
+
+      <section>
+        <h3 class="font-serif text-xl font-bold mb-3">Why does this matter?</h3>
+        <p class="text-text-muted">Terminology choices reflect cultural, political, and institutional positions. This project doesn't advocate for any particular term — it documents how organizations actually use them.</p>
+      </section>
+
+      <section>
+        <h3 class="font-serif text-xl font-bold mb-3">What terms are tracked?</h3>
+        <p class="text-text-muted">Chinese New Year, Lunar New Year, Lunar New Year (Chinese New Year), Spring Festival, and other variants. The dataset records whichever term each organization uses in its public-facing material.</p>
+      </section>
+
+      <section>
+        <h3 class="font-serif text-xl font-bold mb-3">Where does the data come from?</h3>
+        <p class="text-text-muted">Publicly observable sources: websites, social-media posts, press releases, product UIs, and event pages. Every entry includes a source URL so the claim can be verified independently.</p>
+      </section>
+
+      <section>
+        <h3 class="font-serif text-xl font-bold mb-3">Isn't "Lunar New Year" more inclusive?</h3>
+        <p class="text-text-muted">The project doesn't take a position on which term is "correct." It records observable usage. For archival context on how the terminology shifted over time, see the <a href={`${base}/history`} class="text-accent-light hover:underline">History</a> page.</p>
+      </section>
+
+      <section>
+        <h3 class="font-serif text-xl font-bold mb-3">What is the Chinese calendar — lunar or luni-solar?</h3>
+        <p class="text-text-muted">The traditional Chinese calendar is <strong>luni-solar</strong>: it incorporates both lunar phases and the solar year through intercalary months. A purely lunar calendar — one that does not adjust for the solar year — is the Islamic Hijri calendar.</p>
+      </section>
+
+      <section>
+        <h3 class="font-serif text-xl font-bold mb-3">Did UNESCO weigh in?</h3>
+        <p class="text-text-muted">In December 2024, UNESCO inscribed "Spring Festival" (Chunjie) — specifically the social practices of the Chinese people in celebrating the traditional new year — on its Representative List of the Intangible Cultural Heritage of Humanity.</p>
+      </section>
+
+      <section>
+        <h3 class="font-serif text-xl font-bold mb-3">How can I contribute?</h3>
+        <p class="text-text-muted">Submit entries via the project's GitHub repository following the data schema. Pull requests with a source URL and the term used by the organization are welcome.</p>
+      </section>
+    </div>
+  </main>
+</Layout>
