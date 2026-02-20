@@ -29,6 +29,12 @@ Data lives in [`data/2026.jsonl`](data/2026.jsonl). Each line is a JSON object w
 | `contributor` | GitHub username of the contributor |
 | `evidence` | Optional path to a screenshot in `evidence/` |
 
+## Not a boycott list
+
+This project exists solely to document publicly observable terminology choices. It does **not** endorse, encourage, or facilitate boycotts, harassment, or any targeted action against organisations based on the term they use. Organisations are free to choose whatever terminology they consider appropriate. The dataset is intended for research, education, and informed discussion — not to pressure, shame, or punish any entity.
+
+Blog posts and opinion pieces hosted on this site represent the views of their individual authors and do not reflect the position of the project.
+
 ## How to contribute
 
 We welcome contributions! You can:
@@ -74,6 +80,12 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for full details.
 | `notes` | 可选的备注 |
 | `contributor` | 贡献者的 GitHub 用户名 |
 | `evidence` | 可选的截图路径（位于 `evidence/` 目录） |
+
+## 本项目不是抵制名单
+
+本项目仅记录各机构公开使用的节日称呼，**不**支持、鼓励或协助任何形式的抵制、骚扰或针对性行动。各机构有权自行选择其认为合适的称呼。数据集仅用于研究、教育和知情讨论，不用于施压、羞辱或惩罚任何实体。
+
+本站所载博客和评论文章仅代表作者个人观点，不代表项目立场。
 
 ## 如何贡献
 
