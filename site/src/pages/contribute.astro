@@ -1,0 +1,106 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+
+const base = import.meta.env.BASE_URL;
+---
+<Layout title="Contribute — CNY vs LNY">
+  <Navbar />
+  <main class="max-w-3xl mx-auto px-4 py-12">
+    <h1 class="font-serif text-3xl sm:text-4xl font-bold mb-8">Contribute</h1>
+
+    <p class="text-lg text-text-muted mb-4">This dataset grows through community contributions. There are two ways to help.</p>
+
+    <div class="space-y-10 mt-10">
+      <section>
+        <h2 class="font-serif text-2xl font-bold mb-4">Path 1: Via GitHub Issue (no coding required)</h2>
+        <ol class="list-decimal list-inside text-text-muted space-y-2">
+          <li>Go to <a href="https://github.com/zhuygln/cnyvslny/issues/new/choose" target="_blank" rel="noopener noreferrer" class="text-accent-light hover:underline">New Issue</a></li>
+          <li>Choose <strong>Add an entity</strong>, <strong>Update an entity</strong>, or <strong>Correction request</strong></li>
+          <li>Fill in the form fields</li>
+          <li>Submit &mdash; a maintainer will review and add it to the dataset</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2 class="font-serif text-2xl font-bold mb-4">Path 2: Via Pull Request</h2>
+        <ol class="list-decimal list-inside text-text-muted space-y-2">
+          <li><strong>Fork</strong> the <a href="https://github.com/zhuygln/cnyvslny" target="_blank" rel="noopener noreferrer" class="text-accent-light hover:underline">repository</a></li>
+          <li>Edit <code class="bg-[rgba(240,230,255,0.1)] px-1.5 py-0.5 rounded text-sm">data/2026.jsonl</code> (or create a new year file)</li>
+          <li>Add one JSON object per line with the required fields (see table below)</li>
+          <li>Optionally place screenshot evidence in the <code class="bg-[rgba(240,230,255,0.1)] px-1.5 py-0.5 rounded text-sm">evidence/</code> directory</li>
+          <li>Submit your pull request &mdash; CI will automatically validate the data</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2 class="font-serif text-2xl font-bold mb-4">Data Fields</h2>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm text-left text-text-muted">
+            <thead class="border-b border-[rgba(240,230,255,0.15)]">
+              <tr>
+                <th class="py-2 pr-4 font-semibold">Field</th>
+                <th class="py-2 pr-4 font-semibold">Required</th>
+                <th class="py-2 font-semibold">Description</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-[rgba(240,230,255,0.08)]">
+              <tr><td class="py-2 pr-4"><code class="text-sm">entity_name</code></td><td class="py-2 pr-4">Yes</td><td class="py-2">Name of the organization</td></tr>
+              <tr><td class="py-2 pr-4"><code class="text-sm">entity_type</code></td><td class="py-2 pr-4">Yes</td><td class="py-2">company, school, gov, media, nonprofit, app, or other</td></tr>
+              <tr><td class="py-2 pr-4"><code class="text-sm">country_or_region</code></td><td class="py-2 pr-4">Yes</td><td class="py-2">Country or region</td></tr>
+              <tr><td class="py-2 pr-4"><code class="text-sm">term_used</code></td><td class="py-2 pr-4">Yes</td><td class="py-2">Chinese New Year, Lunar New Year, Spring Festival, or other</td></tr>
+              <tr><td class="py-2 pr-4"><code class="text-sm">exact_phrase</code></td><td class="py-2 pr-4">Yes</td><td class="py-2">The literal text used</td></tr>
+              <tr><td class="py-2 pr-4"><code class="text-sm">context</code></td><td class="py-2 pr-4">Yes</td><td class="py-2">social_post, press_release, product_ui, email, event_page, website, or other</td></tr>
+              <tr><td class="py-2 pr-4"><code class="text-sm">platform</code></td><td class="py-2 pr-4">Yes</td><td class="py-2">Where it was published</td></tr>
+              <tr><td class="py-2 pr-4"><code class="text-sm">source_url</code></td><td class="py-2 pr-4">Yes</td><td class="py-2">Public URL to the source</td></tr>
+              <tr><td class="py-2 pr-4"><code class="text-sm">captured_on</code></td><td class="py-2 pr-4">Yes</td><td class="py-2">Date captured (YYYY-MM-DD)</td></tr>
+              <tr><td class="py-2 pr-4"><code class="text-sm">contributor</code></td><td class="py-2 pr-4">Yes</td><td class="py-2">Your GitHub username</td></tr>
+              <tr><td class="py-2 pr-4"><code class="text-sm">notes</code></td><td class="py-2 pr-4">No</td><td class="py-2">Additional context</td></tr>
+              <tr><td class="py-2 pr-4"><code class="text-sm">evidence</code></td><td class="py-2 pr-4">No</td><td class="py-2">Path to screenshot in evidence/</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="font-serif text-2xl font-bold mb-4">Moderation Policy</h2>
+        <ul class="list-disc list-inside text-text-muted space-y-2">
+          <li>This is a <strong>descriptive dataset</strong>, not a cancel list. We document what organizations say &mdash; nothing more.</li>
+          <li><strong>Evidence is required.</strong> Every entry must link to a publicly verifiable source.</li>
+          <li><strong>No insults or political rants</strong> in the notes field. Keep it factual.</li>
+          <li><strong>Correction requests</strong> are welcome. If an entity believes their entry is inaccurate, they may open a correction request issue.</li>
+        </ul>
+      </section>
+
+      <hr class="border-[rgba(240,230,255,0.1)] my-10" />
+
+      <section>
+        <h2 class="font-serif text-2xl font-bold mb-4">贡献指南</h2>
+
+        <h3 class="font-serif text-xl font-bold mb-3">方式一：通过 GitHub Issue（无需编程）</h3>
+        <ol class="list-decimal list-inside text-text-muted space-y-2 mb-6">
+          <li>访问 <a href="https://github.com/zhuygln/cnyvslny/issues/new/choose" target="_blank" rel="noopener noreferrer" class="text-accent-light hover:underline">新建 Issue</a></li>
+          <li>选择 <strong>Add an entity</strong>、<strong>Update an entity</strong> 或 <strong>Correction request</strong></li>
+          <li>填写表单</li>
+          <li>提交 &mdash; 维护者会审核并将其添加到数据集</li>
+        </ol>
+
+        <h3 class="font-serif text-xl font-bold mb-3">方式二：通过 Pull Request</h3>
+        <ol class="list-decimal list-inside text-text-muted space-y-2 mb-6">
+          <li><strong>Fork</strong> 本仓库</li>
+          <li>编辑 <code class="bg-[rgba(240,230,255,0.1)] px-1.5 py-0.5 rounded text-sm">data/2026.jsonl</code>（或创建新的年份文件）</li>
+          <li>每行添加一个 JSON 对象，字段说明见上表</li>
+          <li>提交 Pull Request，CI 会自动验证数据格式</li>
+        </ol>
+
+        <h3 class="font-serif text-xl font-bold mb-3">审核政策</h3>
+        <ul class="list-disc list-inside text-text-muted space-y-2">
+          <li>这是一个<strong>描述性数据集</strong>，不是抵制名单。我们只记录机构的用词，仅此而已。</li>
+          <li><strong>必须提供证据。</strong>每条记录都必须链接到可公开验证的来源。</li>
+          <li><code class="text-sm">notes</code> 字段中<strong>不得包含侮辱性言论或政治宣泄</strong>，请保持客观。</li>
+          <li>欢迎提交<strong>纠错请求</strong>。如果机构认为其记录不准确，可以通过 Issue 提出纠正。</li>
+        </ul>
+      </section>
+    </div>
+  </main>
+</Layout>
