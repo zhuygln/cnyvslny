@@ -106,6 +106,7 @@ function init() {
   const lnySentinel = document.getElementById('lny-sentinel')!;
   const cnyCount = document.getElementById('cny-count')!;
   const lnyCount = document.getElementById('lny-count')!;
+  const totalCount = document.getElementById('total-count')!;
   const cnyColumn = document.getElementById('cny-column')!;
   const lnyColumn = document.getElementById('lny-column')!;
 
@@ -203,6 +204,7 @@ function init() {
 
     cnyCount.textContent = String(cnyFiltered.length);
     lnyCount.textContent = String(lnyFiltered.length);
+    totalCount.textContent = `${cnyFiltered.length + lnyFiltered.length} entries collected`;
 
     renderPage('cny');
     renderPage('lny');
