@@ -33,13 +33,13 @@ function escapeHtml(str: string): string {
 }
 
 const ENTITY_TYPE_CLASSES: Record<string, Record<Column, string>> = {
-  company: { cny: 'bg-red-900/60 text-yellow-200', lny: 'bg-blue-900/60 text-blue-200' },
-  school: { cny: 'bg-red-900/60 text-yellow-200', lny: 'bg-blue-900/60 text-blue-200' },
-  gov: { cny: 'bg-red-900/60 text-yellow-200', lny: 'bg-blue-900/60 text-blue-200' },
-  media: { cny: 'bg-red-900/60 text-yellow-200', lny: 'bg-blue-900/60 text-blue-200' },
-  nonprofit: { cny: 'bg-red-900/60 text-yellow-200', lny: 'bg-blue-900/60 text-blue-200' },
-  app: { cny: 'bg-red-900/60 text-yellow-200', lny: 'bg-blue-900/60 text-blue-200' },
-  other: { cny: 'bg-red-900/60 text-yellow-300/70', lny: 'bg-blue-900/60 text-blue-300/70' },
+  company: { cny: 'bg-red-900/60 text-yellow-200', lny: 'bg-gray-100 text-gray-700' },
+  school: { cny: 'bg-red-900/60 text-yellow-200', lny: 'bg-gray-100 text-gray-700' },
+  gov: { cny: 'bg-red-900/60 text-yellow-200', lny: 'bg-gray-100 text-gray-700' },
+  media: { cny: 'bg-red-900/60 text-yellow-200', lny: 'bg-gray-100 text-gray-700' },
+  nonprofit: { cny: 'bg-red-900/60 text-yellow-200', lny: 'bg-gray-100 text-gray-700' },
+  app: { cny: 'bg-red-900/60 text-yellow-200', lny: 'bg-gray-100 text-gray-700' },
+  other: { cny: 'bg-red-900/60 text-yellow-300/70', lny: 'bg-gray-100 text-gray-500' },
 };
 
 const CONTEXT_LABELS: Record<string, string> = {
@@ -54,27 +54,27 @@ const CONTEXT_LABELS: Record<string, string> = {
 
 function renderCard(entry: Entry, column: Column): string {
   const typeEntry = ENTITY_TYPE_CLASSES[entry.entity_type];
-  const fallback = column === 'lny' ? 'bg-blue-900/60 text-blue-300/70' : 'bg-red-900/60 text-yellow-300/70';
+  const fallback = column === 'lny' ? 'bg-gray-100 text-gray-500' : 'bg-red-900/60 text-yellow-300/70';
   const typeClasses = typeEntry ? typeEntry[column] : fallback;
   const contextLabel = CONTEXT_LABELS[entry.context] || entry.context;
 
   if (column === 'lny') {
-    return `<div class="p-4 hover:bg-blue-700/50 transition-all duration-200 ease-in-out hover:-translate-y-[2px]">
+    return `<div class="p-4 hover:bg-gray-50 transition-all duration-200 ease-in-out hover:-translate-y-[2px]">
     <div class="flex items-start justify-between gap-2">
       <div class="min-w-0">
-        <h3 class="font-medium text-sm truncate text-blue-100">${escapeHtml(entry.entity_name)}</h3>
-        <p class="text-xs text-blue-300/70 mt-0.5">${escapeHtml(entry.country_or_region)}</p>
+        <h3 class="font-medium text-sm truncate text-gray-900">${escapeHtml(entry.entity_name)}</h3>
+        <p class="text-xs text-gray-500 mt-0.5">${escapeHtml(entry.country_or_region)}</p>
       </div>
       <span class="shrink-0 text-xs font-medium rounded-full px-2 py-0.5 ${typeClasses}">${escapeHtml(entry.entity_type)}</span>
     </div>
-    <p class="mt-2 text-sm italic text-blue-100">"${escapeHtml(entry.exact_phrase)}"</p>
-    <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-blue-300/60">
+    <p class="mt-2 text-sm italic text-gray-800">"${escapeHtml(entry.exact_phrase)}"</p>
+    <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-gray-400">
       <span>${escapeHtml(contextLabel)}</span>
       <span>· ${escapeHtml(entry.platform)}</span>
       <span>· ${escapeHtml(entry.captured_on)}</span>
     </div>
-    ${entry.notes ? `<p class="mt-1.5 text-xs text-blue-400/50">${escapeHtml(entry.notes)}</p>` : ''}
-    <a href="${escapeHtml(entry.source_url)}" target="_blank" rel="noopener noreferrer" class="mt-2 inline-block text-xs text-blue-200 hover:text-blue-100 hover:underline transition-colors duration-200">Source ↗</a>
+    ${entry.notes ? `<p class="mt-1.5 text-xs text-gray-400">${escapeHtml(entry.notes)}</p>` : ''}
+    <a href="${escapeHtml(entry.source_url)}" target="_blank" rel="noopener noreferrer" class="mt-2 inline-block text-xs text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-200">Source ↗</a>
   </div>`;
   }
 
