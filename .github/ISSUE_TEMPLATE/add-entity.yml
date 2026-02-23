@@ -83,12 +83,14 @@ body:
     validations:
       required: true
 
-  - type: input
-    id: source_url
+  - type: textarea
+    id: source_urls
     attributes:
-      label: Source URL
-      description: Public link to the source
-      placeholder: https://...
+      label: Source URL(s)
+      description: Public link(s) to the source — one URL per line
+      placeholder: |
+        https://example.com/source1
+        https://example.com/source2
     validations:
       required: true
 

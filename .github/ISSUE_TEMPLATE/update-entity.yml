@@ -20,12 +20,14 @@ body:
     validations:
       required: true
 
-  - type: input
-    id: source_url
+  - type: textarea
+    id: source_urls
     attributes:
-      label: New source URL
-      description: Public link to the updated source
-      placeholder: https://...
+      label: New source URL(s)
+      description: Public link(s) to the updated source — one URL per line
+      placeholder: |
+        https://example.com/source1
+        https://example.com/source2
     validations:
       required: true
 
