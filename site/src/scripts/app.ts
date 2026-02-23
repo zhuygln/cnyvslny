@@ -2,11 +2,11 @@ interface Entry {
   entity_name: string;
   entity_type: string;
   country_or_region: string;
-  term_used: string;
+  term_used: string | string[];
   exact_phrase: string;
   context: string;
   platform: string;
-  source_url: string;
+  sources: { url: string; evidence?: string }[];
   captured_on: string;
   contributor: string;
   notes?: string;
@@ -22,8 +22,13 @@ declare global {
 
 const PAGE_SIZE = 20;
 
-function classifyEntry(entry: Entry): Column {
-  return entry.term_used === 'Lunar New Year' ? 'lny' : 'cny';
+function classifyEntry(entry: Entry): Column | 'both' {
+  const terms = Array.isArray(entry.term_used) ? entry.term_used : [entry.term_used];
+  const hasChinese = terms.some(t => /chinese/i.test(t));
+  const hasLunar = terms.some(t => /lunar/i.test(t));
+  if (hasChinese && hasLunar) return 'both';
+  if (hasLunar) return 'lny';
+  return 'cny';
 }
 
 function escapeHtml(str: string): string {
@@ -74,7 +79,7 @@ function renderCard(entry: Entry, column: Column): string {
       <span>· ${escapeHtml(entry.captured_on)}</span>
     </div>
     ${entry.notes ? `<p class="mt-1.5 text-xs text-gray-400">${escapeHtml(entry.notes)}</p>` : ''}
-    <a href="${escapeHtml(entry.source_url)}" target="_blank" rel="noopener noreferrer" class="mt-2 inline-block text-xs text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-200">Source ↗</a>
+    <div class="mt-2 flex flex-wrap gap-x-3 gap-y-1">${entry.sources.map((s, i) => `<a href="${escapeHtml(s.url)}" target="_blank" rel="noopener noreferrer" class="text-xs text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-200">${entry.sources.length === 1 ? 'Source' : `Source ${i + 1}`} ↗</a>`).join('')}</div>
   </div>`;
   }
 
@@ -93,7 +98,7 @@ function renderCard(entry: Entry, column: Column): string {
       <span>· ${escapeHtml(entry.captured_on)}</span>
     </div>
     ${entry.notes ? `<p class="mt-1.5 text-xs text-yellow-500/50">${escapeHtml(entry.notes)}</p>` : ''}
-    <a href="${escapeHtml(entry.source_url)}" target="_blank" rel="noopener noreferrer" class="mt-2 inline-block text-xs text-yellow-300 hover:text-yellow-100 hover:underline transition-colors duration-200">Source ↗</a>
+    <div class="mt-2 flex flex-wrap gap-x-3 gap-y-1">${entry.sources.map((s, i) => `<a href="${escapeHtml(s.url)}" target="_blank" rel="noopener noreferrer" class="text-xs text-yellow-300 hover:text-yellow-100 hover:underline transition-colors duration-200">${entry.sources.length === 1 ? 'Source' : `Source ${i + 1}`} ↗</a>`).join('')}</div>
   </div>`;
 }
 
@@ -131,7 +136,11 @@ function init() {
     cnyFiltered = [];
     lnyFiltered = [];
     for (const entry of filtered) {
-      if (classifyEntry(entry) === 'cny') {
+      const col = classifyEntry(entry);
+      if (col === 'both') {
+        cnyFiltered.push(entry);
+        lnyFiltered.push(entry);
+      } else if (col === 'cny') {
         cnyFiltered.push(entry);
       } else {
         lnyFiltered.push(entry);
