@@ -11,7 +11,7 @@
     "exact_phrase",
     "context",
     "platform",
-    "source_url",
+    "sources",
     "captured_on",
     "contributor"
   ],
@@ -29,13 +29,29 @@
       "minLength": 1
     },
     "term_used": {
-      "type": "string",
-      "enum": [
-        "Chinese New Year",
-        "Lunar New Year",
-        "Lunar New Year (Chinese New Year)",
-        "Spring Festival",
-        "other"
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "Chinese New Year",
+            "Lunar New Year",
+            "Spring Festival",
+            "other"
+          ]
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "chinese_new_year",
+              "lunar_new_year",
+              "spring_festival",
+              "other"
+            ]
+          },
+          "minItems": 1
+        }
       ]
     },
     "exact_phrase": {
@@ -58,9 +74,18 @@
       "type": "string",
       "minLength": 1
     },
-    "source_url": {
-      "type": "string",
-      "format": "uri"
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["url"],
+        "properties": {
+          "url": { "type": "string", "format": "uri" },
+          "evidence": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
     },
     "captured_on": {
       "type": "string",
@@ -72,9 +97,6 @@
     "contributor": {
       "type": "string",
       "minLength": 1
-    },
-    "evidence": {
-      "type": "string"
     }
   },
   "additionalProperties": false
