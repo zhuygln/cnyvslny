@@ -40,11 +40,14 @@ class Fetcher:
         robots_url = f"{parsed.scheme}://{parsed.netloc}/robots.txt"
 
         if robots_url not in self._robots_cache:
-            rp = RobotFileParser()
-            rp.set_url(robots_url)
             try:
-                rp.read()
-                self._robots_cache[robots_url] = rp
+                resp = self._session.get(robots_url, timeout=(5, 10))
+                if resp.status_code == 200:
+                    rp = RobotFileParser()
+                    rp.parse(resp.text.splitlines())
+                    self._robots_cache[robots_url] = rp
+                else:
+                    self._robots_cache[robots_url] = None
             except Exception:
                 # If we can't read robots.txt, assume allowed
                 self._robots_cache[robots_url] = None
@@ -77,7 +80,7 @@ class Fetcher:
 
         # Fetch
         try:
-            resp = self._session.get(url, timeout=REQUEST_TIMEOUT, allow_redirects=True)
+            resp = self._session.get(url, timeout=(5, REQUEST_TIMEOUT), allow_redirects=True)
             resp.raise_for_status()
         except requests.RequestException as e:
             logger.warning("Fetch failed for %s: %s", url, e)
