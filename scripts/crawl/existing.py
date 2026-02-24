@@ -1,4 +1,5 @@
 """Load existing data/*.jsonl entries and build a dedup index."""
+from __future__ import annotations
 
 import json
 import glob

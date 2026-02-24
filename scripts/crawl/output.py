@@ -1,4 +1,5 @@
 """Write auto-add JSONL, review queue, and crawl report."""
+from __future__ import annotations
 
 import json
 import os

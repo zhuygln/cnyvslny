@@ -16,10 +16,11 @@ CURRENT_YEAR = 2026
 DATA_FILE = os.path.join(DATA_DIR, f"{CURRENT_YEAR}.jsonl")
 
 # Term detection patterns — order matters for priority
+# Allow flexible whitespace, hyphens, and en-dashes between words
 TERM_PATTERNS = [
-    ("chinese_new_year", re.compile(r"Chinese\s+New\s+Year", re.IGNORECASE)),
-    ("lunar_new_year", re.compile(r"Lunar\s+New\s+Year", re.IGNORECASE)),
-    ("spring_festival", re.compile(r"Spring\s+Festival", re.IGNORECASE)),
+    ("chinese_new_year", re.compile(r"Chinese[\s\-\u2010-\u2015]+New[\s\-\u2010-\u2015]+Year", re.IGNORECASE)),
+    ("lunar_new_year", re.compile(r"Lunar[\s\-\u2010-\u2015]+New[\s\-\u2010-\u2015]+Year", re.IGNORECASE)),
+    ("spring_festival", re.compile(r"Spring[\s\-\u2010-\u2015]+Festival", re.IGNORECASE)),
     ("spring_festival", re.compile(r"春节")),
 ]
 
@@ -40,7 +41,7 @@ YEAR_RELEVANCE_PATTERNS = [
 DEFAULT_RATE_LIMIT = 1.0  # seconds between requests per domain
 
 # Scoring thresholds
-AUTO_ADD_THRESHOLD = 0.70
+AUTO_ADD_THRESHOLD = 0.55
 REVIEW_THRESHOLD = 0.40
 
 # Pagination

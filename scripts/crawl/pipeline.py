@@ -1,4 +1,5 @@
 """Orchestration: fetch → extract → score → output."""
+from __future__ import annotations
 
 import json
 import logging

@@ -1,4 +1,5 @@
 """HTML term extraction using BeautifulSoup."""
+from __future__ import annotations
 
 import re
 
@@ -12,7 +13,7 @@ class WebsiteExtractor(BaseExtractor):
     """Extract CNY/LNY terms from HTML pages."""
 
     # Tags to strip before text extraction
-    STRIP_TAGS = {"script", "style", "nav", "footer", "header", "noscript", "iframe"}
+    STRIP_TAGS = {"script", "style", "nav", "footer", "header", "noscript", "iframe", "aside", "form", "svg"}
 
     def extract(self, content: str, url: str) -> ExtractionResult | None:
         soup = BeautifulSoup(content, "lxml")

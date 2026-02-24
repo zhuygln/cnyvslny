@@ -1,4 +1,5 @@
 """HTTP fetching with disk cache and robots.txt compliance."""
+from __future__ import annotations
 
 import hashlib
 import logging
@@ -14,6 +15,11 @@ from .rate_limiter import RateLimiter
 
 logger = logging.getLogger(__name__)
 
+# Transient HTTP status codes worth retrying
+_RETRYABLE_STATUS_CODES = {429, 500, 502, 503, 504}
+_MAX_RETRIES = 2
+_RETRY_DELAYS = [3, 6]  # seconds between retries
+
 
 class Fetcher:
     """Fetches URLs with caching, rate limiting, and robots.txt compliance."""
@@ -21,7 +27,17 @@ class Fetcher:
     def __init__(self, rate_limiter: RateLimiter | None = None,
                  cache_dir: str = CACHE_DIR, use_cache: bool = True):
         self._session = requests.Session()
-        self._session.headers["User-Agent"] = USER_AGENT
+        self._session.headers.update({
+            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                          "AppleWebKit/537.36 (KHTML, like Gecko) "
+                          "Chrome/131.0.0.0 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+            "Accept-Language": "en-US,en;q=0.9",
+            "Accept-Encoding": "gzip, deflate, br",
+            "DNT": "1",
+            "Connection": "keep-alive",
+            "Upgrade-Insecure-Requests": "1",
+        })
         self._rate_limiter = rate_limiter or RateLimiter()
         self._cache_dir = cache_dir
         self._use_cache = use_cache
@@ -78,13 +94,28 @@ class Fetcher:
         # Rate limit
         self._rate_limiter.wait(url)
 
-        # Fetch
-        try:
-            resp = self._session.get(url, timeout=(5, REQUEST_TIMEOUT), allow_redirects=True)
-            resp.raise_for_status()
-        except requests.RequestException as e:
-            logger.warning("Fetch failed for %s: %s", url, e)
-            return None
+        # Fetch with retry on transient errors
+        resp = None
+        for attempt in range(_MAX_RETRIES + 1):
+            try:
+                resp = self._session.get(url, timeout=(5, REQUEST_TIMEOUT), allow_redirects=True)
+                if resp.status_code in _RETRYABLE_STATUS_CODES and attempt < _MAX_RETRIES:
+                    delay = _RETRY_DELAYS[attempt]
+                    logger.info("Retryable %d for %s, waiting %ds (attempt %d/%d)",
+                                resp.status_code, url, delay, attempt + 1, _MAX_RETRIES)
+                    time.sleep(delay)
+                    continue
+                resp.raise_for_status()
+                break
+            except requests.RequestException as e:
+                if resp is not None and resp.status_code in _RETRYABLE_STATUS_CODES and attempt < _MAX_RETRIES:
+                    delay = _RETRY_DELAYS[attempt]
+                    logger.info("Retrying %s after error, waiting %ds (attempt %d/%d)",
+                                url, delay, attempt + 1, _MAX_RETRIES)
+                    time.sleep(delay)
+                    continue
+                logger.warning("Fetch failed for %s: %s", url, e)
+                return None
 
         content = resp.text
 

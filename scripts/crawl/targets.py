@@ -1,4 +1,5 @@
 """Load and validate targets.yaml into dataclasses."""
+from __future__ import annotations
 
 from dataclasses import dataclass, field
 
