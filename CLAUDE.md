@@ -10,6 +10,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 - `data/*.jsonl` — Dataset files (one per year, e.g. `data/2026.jsonl`). Each line is a JSON object validated against `data/schema.json`.
 - `scripts/validate.py` — Python validation script (stdlib only, no dependencies). Validates all JSONL files against the schema, checks for duplicates by `(entity_name, sources[0].url)`.
+- `scripts/crawl.py` — CLI entry point for the web crawler.
+- `scripts/crawl/` — Crawler package: fetches ~80 target URLs (companies, universities, governments, media, apps, nonprofits), extracts CNY/LNY term usage, scores matches, and auto-adds high-confidence entries to `data/2026.jsonl`.
 - `evidence/` — Optional screenshots supporting data entries.
 - `site/` — Astro 5 static site with Tailwind CSS, deployed to GitHub Pages.
 
@@ -20,6 +22,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 python scripts/validate.py
 ```
 Requires Python 3.12+. No pip dependencies. Exits 0 on success, 1 on errors.
+
+### Run crawler
+```
+pip install requests beautifulsoup4 lxml pyyaml   # one-time setup
+python scripts/crawl.py --web-only --verbose       # crawl all targets
+python scripts/crawl.py --dry-run --verbose        # preview without writing data
+python scripts/crawl.py --max-targets 10           # limit number of targets
+```
+Requires Python 3.12+. Targets are defined in `scripts/crawl/targets.yaml`. Results above the auto-add threshold (0.55) are written directly to `data/2026.jsonl`; review candidates (0.40–0.55) are written to `scripts/crawl/output/`. The crawler uses browser-like headers, retry with backoff on transient errors (429/5xx), disk caching in `.cache/crawl/`, and respects robots.txt.
 
 ### Site development
 ```
@@ -51,6 +62,14 @@ The Astro site reads JSONL files at build time via `site/src/lib/load-data.ts`, 
 
 ### Classification logic
 `classifyEntry()` in both `site/src/types/entry.ts` and `site/src/scripts/app.ts` normalizes `term_used` to an array, then uses regex matching: `/chinese/i` → CNY column, `/lunar/i` → LNY column. If an entry matches both (e.g. multi-term), it appears in both columns. All non-lunar terms (`Chinese New Year`, `Spring Festival`, `other`) go to CNY.
+
+### Crawler
+- **`scripts/crawl/targets.yaml`**: ~80 targets with entity metadata and specific URLs (search pages, event pages, product pages — not generic homepages).
+- **`scripts/crawl/fetcher.py`**: HTTP fetching with browser-like headers (Chrome UA), disk cache, robots.txt compliance, rate limiting, and retry with backoff (up to 2 retries with 3s/6s delays on 429/5xx).
+- **`scripts/crawl/extractors/website.py`**: HTML parsing via BeautifulSoup — strips boilerplate tags (`script`, `style`, `nav`, `footer`, `header`, `aside`, `form`, `svg`), then runs term pattern matching.
+- **`scripts/crawl/config.py`**: Term regex patterns (flexible whitespace/hyphens), scoring thresholds (`AUTO_ADD_THRESHOLD = 0.55`, `REVIEW_THRESHOLD = 0.40`).
+- **`scripts/crawl/pipeline.py`**: Orchestrates fetch → extract → score → route (auto-add / review / discard).
+- **`scripts/crawl/scorer.py`**: 5-factor confidence scoring (HTTPS, entity name presence, term count, year relevance, first-party domain).
 
 ### CI/CD
 - **Validate workflow** (`.github/workflows/validate.yml`): Runs `python scripts/validate.py` on PRs that touch `data/**`.
