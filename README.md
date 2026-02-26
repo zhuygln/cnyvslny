@@ -23,11 +23,10 @@ Data lives in [`data/2026.jsonl`](data/2026.jsonl). Each line is a JSON object w
 | `exact_phrase` | The literal text the organization used |
 | `context` | `social_post`, `press_release`, `product_ui`, `email`, `event_page`, `website`, or `other` |
 | `platform` | Where it was published (e.g. "X", "Instagram", "company website") |
-| `source_url` | Link to the public source |
+| `sources` | Array of source objects, each with a required `url` and optional `evidence` path |
 | `captured_on` | Date the entry was captured (YYYY-MM-DD) |
 | `notes` | Optional free-text notes |
 | `contributor` | GitHub username of the contributor |
-| `evidence` | Optional path to a screenshot in `evidence/` |
 
 ## Not a boycott list
 
@@ -75,11 +74,10 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for full details.
 | `exact_phrase` | 机构使用的原始文本 |
 | `context` | `social_post`（社交媒体帖子）、`press_release`（新闻稿）、`product_ui`（产品界面）、`email`（邮件）、`event_page`（活动页面）、`website`（网站）或 `other` |
 | `platform` | 发布平台（如 "X"、"Instagram"、"公司官网"） |
-| `source_url` | 公开来源链接 |
+| `sources` | 来源数组，每项包含必填的 `url` 和可选的 `evidence` 截图路径 |
 | `captured_on` | 采集日期（YYYY-MM-DD） |
 | `notes` | 可选的备注 |
 | `contributor` | 贡献者的 GitHub 用户名 |
-| `evidence` | 可选的截图路径（位于 `evidence/` 目录） |
 
 ## 本项目不是抵制名单
 

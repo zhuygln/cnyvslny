@@ -1,0 +1,873 @@
+# cnyvslny crawler target list
+# Each target defines an entity to check for CNY/LNY terminology.
+#
+# entity_type: company | school | gov | media | nonprofit | app | other
+# context: social_post | press_release | product_ui | email | event_page | website | other
+#
+# ~80 entities: Fortune 100 companies, top US/UK universities,
+# government agencies, major media outlets, and popular apps.
+
+targets:
+  # ============================================================
+  # Fortune 100 Companies
+  # ============================================================
+  - entity_name: "Walmart"
+    entity_type: "company"
+    country_or_region: "US"
+    urls:
+      - url: "https://www.walmart.com/browse/lunar-new-year"
+        context: "website"
+        platform: "walmart.com"
+    twitter_handle: "@Walmart"
+
+  - entity_name: "Amazon"
+    entity_type: "company"
+    country_or_region: "US"
+    urls:
+      - url: "https://www.aboutamazon.com/news/community/lunar-new-year-celebration"
+        context: "website"
+        platform: "aboutamazon.com"
+    twitter_handle: "@amazon"
+
+  - entity_name: "Apple"
+    entity_type: "company"
+    country_or_region: "US"
+    urls:
+      - url: "https://www.apple.com/today/collection/celebrate-lunar-new-year/"
+        context: "event_page"
+        platform: "apple.com"
+    twitter_handle: "@Apple"
+
+  - entity_name: "Microsoft"
+    entity_type: "company"
+    country_or_region: "US"
+    urls:
+      - url: "https://news.microsoft.com/apac/2016/02/08/celebrate-the-lunar-new-year-with-xbox/"
+        context: "press_release"
+        platform: "news.microsoft.com"
+    twitter_handle: "@Microsoft"
+
+  - entity_name: "Google"
+    entity_type: "company"
+    country_or_region: "US"
+    urls:
+      - url: "https://doodles.google/doodle/lunar-new-year-2026/"
+        context: "website"
+        platform: "google.com"
+    twitter_handle: "@Google"
+
+  - entity_name: "Meta"
+    entity_type: "company"
+    country_or_region: "US"
+    urls:
+      - url: "https://about.fb.com/news/2026/01/lunar-new-year/"
+        context: "press_release"
+        platform: "about.fb.com"
+      - url: "https://about.fb.com/news/2025/01/lunar-new-year/"
+        context: "press_release"
+        platform: "about.fb.com"
+    twitter_handle: "@Meta"
+
+  - entity_name: "Tesla"
+    entity_type: "company"
+    country_or_region: "US"
+    urls:
+      - url: "https://www.tesla.com/blog/lunar-new-year"
+        context: "website"
+        platform: "tesla.com"
+      - url: "https://www.tesla.com/blog/chinese-new-year"
+        context: "website"
+        platform: "tesla.com"
+    twitter_handle: "@Tesla"
+
+  - entity_name: "JPMorgan Chase"
+    entity_type: "company"
+    country_or_region: "US"
+    urls:
+      - url: "https://www.chase.com/personal/investments/learning-and-insights/article/lunar-new-year-2026"
+        context: "website"
+        platform: "chase.com"
+    twitter_handle: "@Chase"
+
+  - entity_name: "Costco Wholesale"
+    entity_type: "company"
+    country_or_region: "US"
+    urls:
+      - url: "https://www.costco.com/lunar-new-year.html"
+        context: "website"
+        platform: "costco.com"
+
+  - entity_name: "Nike"
+    entity_type: "company"
+    country_or_region: "US"
+    urls:
+      - url: "https://www.nike.com/launch/t/lunar-new-year-2026-collection"
+        context: "product_ui"
+        platform: "nike.com"
+    twitter_handle: "@Nike"
+
+  - entity_name: "Coca-Cola"
+    entity_type: "company"
+    country_or_region: "US"
+    urls:
+      - url: "https://www.coca-colacompany.com/media-center?q=lunar+new+year"
+        context: "press_release"
+        platform: "coca-colacompany.com"
+      - url: "https://www.coca-colacompany.com/media-center?q=chinese+new+year"
+        context: "press_release"
+        platform: "coca-colacompany.com"
+    twitter_handle: "@CocaCola"
+
+  - entity_name: "PepsiCo"
+    entity_type: "company"
+    country_or_region: "US"
+    urls:
+      - url: "https://design.pepsico.com/lunar-new-year-limited-edition-packs"
+        context: "website"
+        platform: "design.pepsico.com"
+    twitter_handle: "@PepsiCo"
+
+  - entity_name: "Starbucks"
+    entity_type: "company"
+    country_or_region: "US"
+    urls:
+      - url: "https://www.starbucks.com/menu/lunar-new-year-2026"
+        context: "product_ui"
+        platform: "starbucks.com"
+    twitter_handle: "@Starbucks"
+
+  - entity_name: "Walt Disney"
+    entity_type: "company"
+    country_or_region: "US"
+    urls:
+      - url: "https://disneyland.disney.go.com/en-ca/events-tours/lunar-new-year/"
+        context: "event_page"
+        platform: "disneyland.disney.go.com"
+    twitter_handle: "@Disney"
+
+  - entity_name: "Target"
+    entity_type: "company"
+    country_or_region: "US"
+    urls:
+      - url: "https://www.target.com/c/lunar-new-year/-/N-56bnq"
+        context: "website"
+        platform: "target.com"
+    twitter_handle: "@Target"
+
+  - entity_name: "Kroger"
+    entity_type: "company"
+    country_or_region: "US"
+    urls:
+      - url: "https://www.kroger.com/r/host-a-party-for-the-lunar-new-year"
+        context: "website"
+        platform: "kroger.com"
+
+  - entity_name: "Comcast"
+    entity_type: "company"
+    country_or_region: "US"
+    urls:
+      - url: "https://corporate.comcast.com/stories/celebrate-2026-lunar-new-year"
+        context: "website"
+        platform: "corporate.comcast.com"
+
+  - entity_name: "Verizon Communications"
+    entity_type: "company"
+    country_or_region: "US"
+    urls:
+      - url: "https://www.verizon.com/about/news/lunar-new-year-red-envelopes"
+        context: "website"
+        platform: "verizon.com"
+    twitter_handle: "@Verizon"
+
+  - entity_name: "AT&T"
+    entity_type: "company"
+    country_or_region: "US"
+    urls:
+      - url: "https://discoverydistrict.att.com/events/lunar-new-year-celebration-2026"
+        context: "event_page"
+        platform: "discoverydistrict.att.com"
+    twitter_handle: "@ATT"
+
+  - entity_name: "Bank of America"
+    entity_type: "company"
+    country_or_region: "US"
+    urls:
+      - url: "https://newsroom.bankofamerica.com/content/newsroom/press-releases/2023/02/lunar-new-year-celebrations.html"
+        context: "press_release"
+        platform: "newsroom.bankofamerica.com"
+
+  - entity_name: "Lowe's"
+    entity_type: "company"
+    country_or_region: "US"
+    urls:
+      - url: "https://www.lowes.com/pd/Lowe-s-Lunar-New-Year-Gift-Card/5014938043"
+        context: "product_ui"
+        platform: "lowes.com"
+
+  - entity_name: "Publix Super Markets"
+    entity_type: "company"
+    country_or_region: "US"
+    urls:
+      - url: "https://www.publix.com/recipe-collection/lunar-new-year"
+        context: "website"
+        platform: "publix.com"
+
+  - entity_name: "Samsung"
+    entity_type: "company"
+    country_or_region: "KR"
+    urls:
+      - url: "https://news.samsung.com/global/?s=lunar+new+year"
+        context: "press_release"
+        platform: "news.samsung.com"
+      - url: "https://news.samsung.com/global/?s=chinese+new+year"
+        context: "press_release"
+        platform: "news.samsung.com"
+    twitter_handle: "@Samsung"
+
+  - entity_name: "Gucci"
+    entity_type: "company"
+    country_or_region: "IT"
+    urls:
+      - url: "https://www.gucci.com/us/en/st/capsule/chinese-new-year"
+        context: "product_ui"
+        platform: "gucci.com"
+      - url: "https://www.gucci.com/us/en/st/capsule/lunar-new-year"
+        context: "product_ui"
+        platform: "gucci.com"
+    twitter_handle: "@guaborci"
+
+  - entity_name: "Burberry"
+    entity_type: "company"
+    country_or_region: "UK"
+    urls:
+      - url: "https://us.burberry.com/c/lunar-new-year/"
+        context: "product_ui"
+        platform: "burberry.com"
+      - url: "https://us.burberry.com/c/chinese-new-year/"
+        context: "product_ui"
+        platform: "burberry.com"
+
+  - entity_name: "Trader Joe's"
+    entity_type: "company"
+    country_or_region: "US"
+    urls:
+      - url: "https://www.traderjoes.com/home/products/category/lunar-new-year"
+        context: "product_ui"
+        platform: "traderjoes.com"
+
+  - entity_name: "New Balance"
+    entity_type: "company"
+    country_or_region: "US"
+    urls:
+      - url: "https://www.newbalance.com/lunar-new-year-collection/"
+        context: "product_ui"
+        platform: "newbalance.com"
+
+  - entity_name: "Sephora"
+    entity_type: "company"
+    country_or_region: "FR"
+    urls:
+      - url: "https://www.sephora.com/search?keyword=lunar+new+year"
+        context: "product_ui"
+        platform: "sephora.com"
+      - url: "https://www.sephora.com/search?keyword=chinese+new+year"
+        context: "product_ui"
+        platform: "sephora.com"
+    twitter_handle: "@Sephora"
+
+  - entity_name: "Heineken"
+    entity_type: "company"
+    country_or_region: "NL"
+    urls:
+      - url: "https://www.heineken.com/global/en/our-stories?q=lunar+new+year"
+        context: "website"
+        platform: "heineken.com"
+      - url: "https://www.heineken.com/global/en/our-stories?q=chinese+new+year"
+        context: "website"
+        platform: "heineken.com"
+
+  - entity_name: "Lenovo"
+    entity_type: "company"
+    country_or_region: "CN"
+    urls:
+      - url: "https://www.lenovo.com/us/en/d/deals/lunar-new-year/"
+        context: "product_ui"
+        platform: "lenovo.com"
+
+  # ============================================================
+  # Top US/UK Universities
+  # ============================================================
+  - entity_name: "Harvard University"
+    entity_type: "school"
+    country_or_region: "US"
+    urls:
+      - url: "https://www.harvard.edu/events/?s=lunar+new+year"
+        context: "event_page"
+        platform: "harvard.edu"
+      - url: "https://www.harvard.edu/events/?s=chinese+new+year"
+        context: "event_page"
+        platform: "harvard.edu"
+
+  - entity_name: "Stanford University"
+    entity_type: "school"
+    country_or_region: "US"
+    urls:
+      - url: "https://events.stanford.edu/?search=lunar+new+year"
+        context: "event_page"
+        platform: "stanford.edu"
+      - url: "https://events.stanford.edu/?search=chinese+new+year"
+        context: "event_page"
+        platform: "stanford.edu"
+
+  - entity_name: "MIT"
+    entity_type: "school"
+    country_or_region: "US"
+    urls:
+      - url: "https://calendar.mit.edu/search?q=lunar+new+year"
+        context: "event_page"
+        platform: "mit.edu"
+      - url: "https://calendar.mit.edu/search?q=chinese+new+year"
+        context: "event_page"
+        platform: "mit.edu"
+
+  - entity_name: "Princeton University"
+    entity_type: "school"
+    country_or_region: "US"
+    urls:
+      - url: "https://events.princeton.edu/?q=lunar+new+year"
+        context: "event_page"
+        platform: "princeton.edu"
+      - url: "https://events.princeton.edu/?q=chinese+new+year"
+        context: "event_page"
+        platform: "princeton.edu"
+
+  - entity_name: "Yale University"
+    entity_type: "school"
+    country_or_region: "US"
+    urls:
+      - url: "https://events.yale.edu/?q=lunar+new+year"
+        context: "event_page"
+        platform: "yale.edu"
+      - url: "https://events.yale.edu/?q=chinese+new+year"
+        context: "event_page"
+        platform: "yale.edu"
+
+  - entity_name: "Columbia University"
+    entity_type: "school"
+    country_or_region: "US"
+    urls:
+      - url: "https://events.columbia.edu/search?q=lunar+new+year"
+        context: "event_page"
+        platform: "columbia.edu"
+      - url: "https://events.columbia.edu/search?q=chinese+new+year"
+        context: "event_page"
+        platform: "columbia.edu"
+
+  - entity_name: "University of Pennsylvania"
+    entity_type: "school"
+    country_or_region: "US"
+    urls:
+      - url: "https://penntoday.upenn.edu/?s=lunar+new+year"
+        context: "event_page"
+        platform: "upenn.edu"
+      - url: "https://penntoday.upenn.edu/?s=chinese+new+year"
+        context: "event_page"
+        platform: "upenn.edu"
+
+  - entity_name: "University of Chicago"
+    entity_type: "school"
+    country_or_region: "US"
+    urls:
+      - url: "https://events.uchicago.edu/search?q=lunar+new+year"
+        context: "event_page"
+        platform: "uchicago.edu"
+      - url: "https://events.uchicago.edu/search?q=chinese+new+year"
+        context: "event_page"
+        platform: "uchicago.edu"
+
+  - entity_name: "Duke University"
+    entity_type: "school"
+    country_or_region: "US"
+    urls:
+      - url: "https://events.duke.edu/?q=lunar+new+year"
+        context: "event_page"
+        platform: "duke.edu"
+      - url: "https://events.duke.edu/?q=chinese+new+year"
+        context: "event_page"
+        platform: "duke.edu"
+
+  - entity_name: "Northwestern University"
+    entity_type: "school"
+    country_or_region: "US"
+    urls:
+      - url: "https://www.northwestern.edu/events/?q=lunar+new+year"
+        context: "event_page"
+        platform: "northwestern.edu"
+      - url: "https://www.northwestern.edu/events/?q=chinese+new+year"
+        context: "event_page"
+        platform: "northwestern.edu"
+
+  - entity_name: "UC Berkeley"
+    entity_type: "school"
+    country_or_region: "US"
+    urls:
+      - url: "https://events.berkeley.edu/search?q=lunar+new+year"
+        context: "event_page"
+        platform: "berkeley.edu"
+      - url: "https://events.berkeley.edu/search?q=chinese+new+year"
+        context: "event_page"
+        platform: "berkeley.edu"
+
+  - entity_name: "UCLA"
+    entity_type: "school"
+    country_or_region: "US"
+    urls:
+      - url: "https://community.ucla.edu/?s=lunar+new+year"
+        context: "event_page"
+        platform: "community.ucla.edu"
+      - url: "https://community.ucla.edu/?s=chinese+new+year"
+        context: "event_page"
+        platform: "community.ucla.edu"
+
+  - entity_name: "University of Michigan"
+    entity_type: "school"
+    country_or_region: "US"
+    urls:
+      - url: "https://events.umich.edu/list?search=lunar+new+year"
+        context: "event_page"
+        platform: "umich.edu"
+      - url: "https://events.umich.edu/list?search=chinese+new+year"
+        context: "event_page"
+        platform: "umich.edu"
+
+  - entity_name: "Carnegie Mellon University"
+    entity_type: "school"
+    country_or_region: "US"
+    urls:
+      - url: "https://www.cmu.edu/search/?q=lunar+new+year"
+        context: "event_page"
+        platform: "cmu.edu"
+      - url: "https://www.cmu.edu/search/?q=chinese+new+year"
+        context: "event_page"
+        platform: "cmu.edu"
+
+  - entity_name: "University of Southern California"
+    entity_type: "school"
+    country_or_region: "US"
+    urls:
+      - url: "https://campusactivities.usc.edu/?s=lunar+new+year"
+        context: "event_page"
+        platform: "usc.edu"
+      - url: "https://campusactivities.usc.edu/?s=chinese+new+year"
+        context: "event_page"
+        platform: "usc.edu"
+
+  - entity_name: "NYU"
+    entity_type: "school"
+    country_or_region: "US"
+    urls:
+      - url: "https://www.nyu.edu/search.html?q=lunar+new+year"
+        context: "event_page"
+        platform: "nyu.edu"
+      - url: "https://www.nyu.edu/search.html?q=chinese+new+year"
+        context: "event_page"
+        platform: "nyu.edu"
+
+  - entity_name: "Cornell University"
+    entity_type: "school"
+    country_or_region: "US"
+    urls:
+      - url: "https://events.cornell.edu/search?q=lunar+new+year"
+        context: "event_page"
+        platform: "cornell.edu"
+      - url: "https://events.cornell.edu/search?q=chinese+new+year"
+        context: "event_page"
+        platform: "cornell.edu"
+
+  - entity_name: "University of Washington"
+    entity_type: "school"
+    country_or_region: "US"
+    urls:
+      - url: "https://www.washington.edu/search/?q=lunar+new+year"
+        context: "event_page"
+        platform: "washington.edu"
+      - url: "https://www.washington.edu/search/?q=chinese+new+year"
+        context: "event_page"
+        platform: "washington.edu"
+
+  - entity_name: "UC Irvine"
+    entity_type: "school"
+    country_or_region: "US"
+    urls:
+      - url: "https://uci.edu/search/?q=lunar+new+year"
+        context: "event_page"
+        platform: "uci.edu"
+      - url: "https://uci.edu/search/?q=chinese+new+year"
+        context: "event_page"
+        platform: "uci.edu"
+
+  - entity_name: "University of Cambridge"
+    entity_type: "school"
+    country_or_region: "UK"
+    urls:
+      - url: "https://www.cam.ac.uk/search?query=lunar+new+year"
+        context: "event_page"
+        platform: "cam.ac.uk"
+      - url: "https://www.cam.ac.uk/search?query=chinese+new+year"
+        context: "event_page"
+        platform: "cam.ac.uk"
+
+  - entity_name: "University of Oxford"
+    entity_type: "school"
+    country_or_region: "UK"
+    urls:
+      - url: "https://www.ox.ac.uk/events-list?q=lunar+new+year"
+        context: "event_page"
+        platform: "ox.ac.uk"
+      - url: "https://www.ox.ac.uk/events-list?q=chinese+new+year"
+        context: "event_page"
+        platform: "ox.ac.uk"
+
+  - entity_name: "Imperial College London"
+    entity_type: "school"
+    country_or_region: "UK"
+    urls:
+      - url: "https://www.imperial.ac.uk/search/?q=lunar+new+year"
+        context: "event_page"
+        platform: "imperial.ac.uk"
+      - url: "https://www.imperial.ac.uk/search/?q=chinese+new+year"
+        context: "event_page"
+        platform: "imperial.ac.uk"
+
+  - entity_name: "London School of Economics"
+    entity_type: "school"
+    country_or_region: "UK"
+    urls:
+      - url: "https://www.lse.ac.uk/search-results?query=lunar+new+year"
+        context: "event_page"
+        platform: "lse.ac.uk"
+      - url: "https://www.lse.ac.uk/search-results?query=chinese+new+year"
+        context: "event_page"
+        platform: "lse.ac.uk"
+
+  - entity_name: "University College London"
+    entity_type: "school"
+    country_or_region: "UK"
+    urls:
+      - url: "https://www.ucl.ac.uk/search-results/?q=lunar+new+year"
+        context: "event_page"
+        platform: "ucl.ac.uk"
+      - url: "https://www.ucl.ac.uk/search-results/?q=chinese+new+year"
+        context: "event_page"
+        platform: "ucl.ac.uk"
+
+  # ============================================================
+  # Government Agencies
+  # ============================================================
+  - entity_name: "The White House"
+    entity_type: "gov"
+    country_or_region: "US"
+    urls:
+      - url: "https://www.whitehouse.gov/search/?query=lunar+new+year"
+        context: "press_release"
+        platform: "whitehouse.gov"
+
+  - entity_name: "U.S. Department of State"
+    entity_type: "gov"
+    country_or_region: "US"
+    urls:
+      - url: "https://www.state.gov/search/#gsc.q=lunar%20new%20year"
+        context: "press_release"
+        platform: "state.gov"
+      - url: "https://www.state.gov/search/#gsc.q=chinese%20new%20year"
+        context: "press_release"
+        platform: "state.gov"
+    twitter_handle: "@StateDept"
+
+  - entity_name: "UK Government"
+    entity_type: "gov"
+    country_or_region: "UK"
+    urls:
+      - url: "https://www.gov.uk/search/all?keywords=lunar+new+year"
+        context: "press_release"
+        platform: "gov.uk"
+
+  - entity_name: "City of San Francisco"
+    entity_type: "gov"
+    country_or_region: "US"
+    urls:
+      - url: "https://sf.gov/search?query=lunar+new+year"
+        context: "website"
+        platform: "sf.gov"
+      - url: "https://sf.gov/search?query=chinese+new+year"
+        context: "website"
+        platform: "sf.gov"
+
+  - entity_name: "City of New York"
+    entity_type: "gov"
+    country_or_region: "US"
+    urls:
+      - url: "https://www.nyc.gov/search?query=lunar+new+year"
+        context: "website"
+        platform: "nyc.gov"
+      - url: "https://www.nyc.gov/search?query=chinese+new+year"
+        context: "website"
+        platform: "nyc.gov"
+
+  - entity_name: "City of Los Angeles"
+    entity_type: "gov"
+    country_or_region: "US"
+    urls:
+      - url: "https://www.lacity.gov/search?q=lunar+new+year"
+        context: "website"
+        platform: "lacity.gov"
+      - url: "https://www.lacity.gov/search?q=chinese+new+year"
+        context: "website"
+        platform: "lacity.gov"
+
+  - entity_name: "Australian Government"
+    entity_type: "gov"
+    country_or_region: "AU"
+    urls:
+      - url: "https://www.australia.gov.au/search?query=lunar+new+year"
+        context: "website"
+        platform: "australia.gov.au"
+      - url: "https://www.australia.gov.au/search?query=chinese+new+year"
+        context: "website"
+        platform: "australia.gov.au"
+
+  - entity_name: "Government of Canada"
+    entity_type: "gov"
+    country_or_region: "CA"
+    urls:
+      - url: "https://www.canada.ca/en/sr/srb.html?q=lunar+new+year"
+        context: "website"
+        platform: "canada.ca"
+      - url: "https://www.canada.ca/en/sr/srb.html?q=chinese+new+year"
+        context: "website"
+        platform: "canada.ca"
+
+  - entity_name: "UNESCO"
+    entity_type: "gov"
+    country_or_region: "International"
+    urls:
+      - url: "https://ich.unesco.org/en/RL/spring-festival-social-practices-of-the-chinese-people-in-celebration-of-traditional-new-year-02126"
+        context: "website"
+        platform: "ich.unesco.org"
+
+  - entity_name: "United Nations"
+    entity_type: "gov"
+    country_or_region: "International"
+    urls:
+      - url: "https://www.un.org/en/search?query=lunar+new+year"
+        context: "website"
+        platform: "un.org"
+      - url: "https://www.un.org/en/search?query=chinese+new+year"
+        context: "website"
+        platform: "un.org"
+    twitter_handle: "@UN"
+
+  # ============================================================
+  # Major Media Outlets
+  # ============================================================
+  - entity_name: "BBC"
+    entity_type: "media"
+    country_or_region: "UK"
+    urls:
+      - url: "https://www.bbc.com/news/topics/c5jxdq95xm4t"
+        context: "website"
+        platform: "bbc.com"
+    twitter_handle: "@BBC"
+
+  - entity_name: "CNN"
+    entity_type: "media"
+    country_or_region: "US"
+    urls:
+      - url: "https://www.cnn.com/search?q=lunar+new+year+2026"
+        context: "website"
+        platform: "cnn.com"
+      - url: "https://www.cnn.com/search?q=chinese+new+year+2026"
+        context: "website"
+        platform: "cnn.com"
+    twitter_handle: "@CNN"
+
+  - entity_name: "The New York Times"
+    entity_type: "media"
+    country_or_region: "US"
+    urls:
+      - url: "https://www.nytimes.com/search?query=lunar+new+year"
+        context: "website"
+        platform: "nytimes.com"
+      - url: "https://www.nytimes.com/search?query=chinese+new+year"
+        context: "website"
+        platform: "nytimes.com"
+    twitter_handle: "@nytimes"
+
+  - entity_name: "The Washington Post"
+    entity_type: "media"
+    country_or_region: "US"
+    urls:
+      - url: "https://www.washingtonpost.com/search/?query=lunar+new+year"
+        context: "website"
+        platform: "washingtonpost.com"
+      - url: "https://www.washingtonpost.com/search/?query=chinese+new+year"
+        context: "website"
+        platform: "washingtonpost.com"
+    twitter_handle: "@washingtonpost"
+
+  - entity_name: "Reuters"
+    entity_type: "media"
+    country_or_region: "UK"
+    urls:
+      - url: "https://www.reuters.com/world/asia-pacific/lunar-new-year/"
+        context: "website"
+        platform: "reuters.com"
+    twitter_handle: "@Reuters"
+
+  - entity_name: "The Guardian"
+    entity_type: "media"
+    country_or_region: "UK"
+    urls:
+      - url: "https://www.theguardian.com/world/lunar-new-year"
+        context: "website"
+        platform: "theguardian.com"
+      - url: "https://www.theguardian.com/search?q=chinese+new+year+2026"
+        context: "website"
+        platform: "theguardian.com"
+    twitter_handle: "@guardian"
+
+  - entity_name: "AP News"
+    entity_type: "media"
+    country_or_region: "US"
+    urls:
+      - url: "https://apnews.com/search?q=lunar+new+year+2026"
+        context: "website"
+        platform: "apnews.com"
+      - url: "https://apnews.com/search?q=chinese+new+year+2026"
+        context: "website"
+        platform: "apnews.com"
+    twitter_handle: "@AP"
+
+  - entity_name: "NPR"
+    entity_type: "media"
+    country_or_region: "US"
+    urls:
+      - url: "https://www.npr.org/search?query=lunar+new+year"
+        context: "website"
+        platform: "npr.org"
+      - url: "https://www.npr.org/search?query=chinese+new+year"
+        context: "website"
+        platform: "npr.org"
+    twitter_handle: "@NPR"
+
+  - entity_name: "NBC News"
+    entity_type: "media"
+    country_or_region: "US"
+    urls:
+      - url: "https://www.nbcnews.com/search/?q=lunar+new+year"
+        context: "website"
+        platform: "nbcnews.com"
+      - url: "https://www.nbcnews.com/search/?q=chinese+new+year"
+        context: "website"
+        platform: "nbcnews.com"
+    twitter_handle: "@NBCNews"
+
+  - entity_name: "ABC News"
+    entity_type: "media"
+    country_or_region: "US"
+    urls:
+      - url: "https://abcnews.go.com/search?searchtext=lunar+new+year"
+        context: "website"
+        platform: "abcnews.go.com"
+      - url: "https://abcnews.go.com/search?searchtext=chinese+new+year"
+        context: "website"
+        platform: "abcnews.go.com"
+    twitter_handle: "@ABC"
+
+  # ============================================================
+  # Major Apps & Platforms
+  # ============================================================
+  - entity_name: "TikTok"
+    entity_type: "app"
+    country_or_region: "US"
+    urls:
+      - url: "https://newsroom.tiktok.com/en-us/lunar-new-year-2026"
+        context: "product_ui"
+        platform: "tiktok.com"
+
+  - entity_name: "Pokemon GO"
+    entity_type: "app"
+    country_or_region: "US"
+    urls:
+      - url: "https://www.pokemon.com/us/pokemon-news/get-fired-up-for-pokemon-gos-lunar-new-year-event"
+        context: "product_ui"
+        platform: "pokemongo.com"
+
+  - entity_name: "Spotify"
+    entity_type: "app"
+    country_or_region: "SE"
+    urls:
+      - url: "https://newsroom.spotify.com/?s=lunar+new+year"
+        context: "press_release"
+        platform: "spotify.com"
+      - url: "https://newsroom.spotify.com/?s=chinese+new+year"
+        context: "press_release"
+        platform: "spotify.com"
+    twitter_handle: "@Spotify"
+
+  - entity_name: "Netflix"
+    entity_type: "app"
+    country_or_region: "US"
+    urls:
+      - url: "https://about.netflix.com/en/search?q=lunar+new+year"
+        context: "press_release"
+        platform: "netflix.com"
+      - url: "https://about.netflix.com/en/search?q=chinese+new+year"
+        context: "press_release"
+        platform: "netflix.com"
+    twitter_handle: "@netflix"
+
+  - entity_name: "Instagram"
+    entity_type: "app"
+    country_or_region: "US"
+    urls:
+      - url: "https://about.instagram.com/blog/announcements/lunar-new-year"
+        context: "press_release"
+        platform: "instagram.com"
+      - url: "https://about.instagram.com/blog/announcements/chinese-new-year"
+        context: "press_release"
+        platform: "instagram.com"
+    twitter_handle: "@instagram"
+
+  # ============================================================
+  # Nonprofits / Cultural Institutions
+  # ============================================================
+  - entity_name: "The Metropolitan Museum of Art"
+    entity_type: "nonprofit"
+    country_or_region: "US"
+    urls:
+      - url: "https://www.metmuseum.org/events/programs/met-celebrates/lunar-new-year"
+        context: "event_page"
+        platform: "metmuseum.org"
+
+  - entity_name: "Smithsonian Institution"
+    entity_type: "nonprofit"
+    country_or_region: "US"
+    urls:
+      - url: "https://www.si.edu/search?edan_q=lunar+new+year"
+        context: "event_page"
+        platform: "si.edu"
+      - url: "https://www.si.edu/search?edan_q=chinese+new+year"
+        context: "event_page"
+        platform: "si.edu"
+
+  - entity_name: "Asia Society"
+    entity_type: "nonprofit"
+    country_or_region: "US"
+    urls:
+      - url: "https://asiasociety.org/?s=lunar+new+year"
+        context: "event_page"
+        platform: "asiasociety.org"
+      - url: "https://asiasociety.org/?s=chinese+new+year"
+        context: "event_page"
+        platform: "asiasociety.org"

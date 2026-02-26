@@ -12,3 +12,5 @@ Thumbs.db
 site/node_modules/
 site/dist/
 site/.astro/
+.cache/crawl/
+scripts/crawl/output/

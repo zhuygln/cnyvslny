@@ -69,6 +69,30 @@ def validate_entry(entry, schema, errors, filename, line_num):
                     f"(YYYY-MM-DD): '{value}'"
                 )
 
+    # Validate sources array
+    if "sources" in entry:
+        sources = entry["sources"]
+        if not isinstance(sources, list):
+            errors.append(f"{prefix}: field 'sources' must be an array")
+        elif len(sources) < 1:
+            errors.append(f"{prefix}: field 'sources' must have at least 1 item")
+        else:
+            allowed_source_keys = {"url", "evidence"}
+            for i, src in enumerate(sources):
+                sp = f"{prefix}: sources[{i}]"
+                if not isinstance(src, dict):
+                    errors.append(f"{sp}: must be an object")
+                    continue
+                if "url" not in src:
+                    errors.append(f"{sp}: missing required field 'url'")
+                elif not isinstance(src["url"], str) or not URL_RE.match(src["url"]):
+                    errors.append(f"{sp}: 'url' is not a valid URL: '{src.get('url')}'")
+                if "evidence" in src and not isinstance(src["evidence"], str):
+                    errors.append(f"{sp}: 'evidence' must be a string")
+                extra = set(src.keys()) - allowed_source_keys
+                if extra:
+                    errors.append(f"{sp}: unexpected keys {extra}")
+
 
 def main():
     if not os.path.exists(SCHEMA_PATH):
@@ -100,11 +124,13 @@ def main():
 
                 validate_entry(entry, schema, errors, filename, line_num)
 
-                dup_key = (entry.get("entity_name"), entry.get("source_url"))
+                sources = entry.get("sources", [])
+                first_url = sources[0]["url"] if sources else None
+                dup_key = (entry.get("entity_name"), first_url)
                 if dup_key in seen:
                     errors.append(
                         f"{filename}:{line_num}: duplicate entry "
-                        f"(entity_name={dup_key[0]!r}, source_url={dup_key[1]!r})"
+                        f"(entity_name={dup_key[0]!r}, sources[0].url={dup_key[1]!r})"
                     )
                 seen.add(dup_key)
 
